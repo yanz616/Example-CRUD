@@ -1,9 +1,9 @@
 services:
-  mariadb-Wira:
+  mariadb-wira:
     build:
       context: .
       dockerfile: mariadb.Containerfile
-    container_name: mariadb-Wira
+    container_name: mariadb-wira
     environment:
       MYSQL_ROOT_PASSWORD: 12341234
       MYSQL_DATABASE: showroom_mobil
@@ -12,29 +12,29 @@ services:
     volumes:
       - mariadb-data:/var/lib/mysql:Z
 
-  php-apache-Wira:
+  php-apache-wira:
     build:
       context: .
       dockerfile: php-apache.Containerfile
-    container_name: php-apache-Wira
+    container_name: php-apache-wira
     ports:
       - "8001:80"
     volumes:
       - ./app:/var/www/html:Z
     depends_on:
-      - mariadb-Wira
+      - mariadb-wira
 
-  phpmyadmin-Wira:
+  phpmyadmin-wira:
     image: docker.io/phpmyadmin/phpmyadmin
-    container_name: phpmyadmin-Wira
+    container_name: phpmyadmin-wira
     restart: always
     ports:
       - "8002:80"
     environment:
-      PMA_HOST: mariadb-Wira
+      PMA_HOST: mariadb-wira
       MYSQL_ROOT_PASSWORD: 12341234
     depends_on:
-      - mariadb-Wira
+      - mariadb-wira
 
 volumes:
   mariadb-data: {}

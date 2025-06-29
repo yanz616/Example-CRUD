@@ -1,5 +1,5 @@
 <?php
-$hostname = "mariadb-Wira";
+$hostname = "mariadb-wira";
 $username = "root";
 $password = "12341234";
 $database = "showroom_mobil";
